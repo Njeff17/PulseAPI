@@ -19,7 +19,7 @@ A small REST API for technicians to register monitoring devices and log voltage 
 Requires Node.js 20.6 or newer and Git.
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Njeff17/PulseAPI.git
 cd PulseAPI
 npm install
 cp .env.example .env

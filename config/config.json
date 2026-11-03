@@ -1,0 +1,7 @@
+{
+  "development": {
+    "dialect": "sqlite",
+    "storage": "pulse.db",
+    "logging": false
+  }
+}

@@ -17,6 +17,19 @@ app.use(authRoutes);
 app.use("/api/devices", requireAuth, deviceRoutes);
 app.use("/api/devices/:id/readings", requireAuth, readingRoutes);
 
+app.use(function (req, res) {
+  res.status(404).json({ error: "Route not found" });
+});
+
+app.use(function (err, req, res, next) {
+  if (err.type === "entity.parse.failed") {
+    return res.status(400).json({ error: "Invalid JSON" });
+  }
+
+  console.error(err);
+  res.status(500).json({ error: "Something went wrong" });
+});
+
 app.listen(PORT, function () {
   console.log("PulseAPI is running at http://localhost:" + PORT);
 });

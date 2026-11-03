@@ -1,7 +1,7 @@
 {
   "name": "pulseapi",
   "version": "1.0.0",
-  "description": "",
+  "description": "REST API for technicians to register monitoring devices and log voltage readings",
   "license": "ISC",
   "author": "",
   "type": "commonjs",
@@ -23,5 +23,8 @@
   "devDependencies": {
     "prettier": "^3.3.3",
     "sequelize-cli": "^6.6.5"
+  },
+  "engines": {
+    "node": ">=20.6.0"
   }
 }

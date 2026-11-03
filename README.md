@@ -198,6 +198,6 @@ All alert endpoints require a token.
 
 I used Claude (Anthropic) through Claude Code in VS Code while building this project.
 
-- **Learning:**  I used it to understand topics I was less familiar with, such as QA testing and good code formatting.
+- **Learning:** I used it to understand topics I was less familiar with, such as QA testing and good code formatting.
 
 I have reviewed all the code and can explain and modify any part of it.

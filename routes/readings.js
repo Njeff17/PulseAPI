@@ -1,5 +1,5 @@
 const express = require("express");
-const { Device, Reading } = require("../models");
+const { Device, Reading, Alert } = require("../models");
 
 const router = express.Router({ mergeParams: true });
 
@@ -20,6 +20,14 @@ router.post("/", async function (req, res) {
     deviceId: device.id,
     voltage: voltage,
   });
+
+  if (voltage < 0 || voltage > 60) {
+    await Alert.create({
+      deviceId: device.id,
+      voltage: voltage,
+      timestamp: reading.timestamp,
+    });
+  }
 
   res.status(201).json(reading);
 });

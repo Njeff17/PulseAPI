@@ -1,0 +1,18 @@
+# Installed packages (recreated with "npm install")
+node_modules/
+
+# SQLite database files (recreated with "npm run db:migrate")
+pulse.db
+pulse-test.db
+
+# Secret settings (passwords, keys)
+.env
+
+# Log files
+npm-debug.log*
+*.log
+
+# System and editor files
+.DS_Store
+Thumbs.db
+.vscode/

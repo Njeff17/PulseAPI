@@ -3,6 +3,7 @@ const requireAuth = require("./middleware/requireAuth");
 const authRoutes = require("./routes/auth");
 const deviceRoutes = require("./routes/devices");
 const readingRoutes = require("./routes/readings");
+const alertRoutes = require("./routes/alerts");
 
 const app = express();
 const PORT = 3000;
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use(authRoutes);
 app.use("/api/devices", requireAuth, deviceRoutes);
 app.use("/api/devices/:id/readings", requireAuth, readingRoutes);
+app.use("/api/alerts", requireAuth, alertRoutes);
 
 app.use(function (req, res) {
   res.status(404).json({ error: "Route not found" });

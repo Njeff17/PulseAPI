@@ -125,3 +125,19 @@ Content-Type: application/json
 | `201`  | Reading saved             |
 | `400`  | `voltage` is not a number |
 | `404`  | Device does not exist     |
+
+## Alerts
+
+When a reading is below 0 V or above 60 V, an alert is created automatically. An alert stores the `deviceId`, the `voltage` and the `timestamp`.
+
+All alert endpoints require a token.
+
+| Method   | Path               | Description               |
+| -------- | ------------------ | ------------------------- |
+| `GET`    | `/api/alerts`      | List all alerts           |
+| `DELETE` | `/api/alerts/{id}` | Dismiss (delete) an alert |
+
+| Status | When                 |
+| ------ | -------------------- |
+| `204`  | Alert dismissed      |
+| `404`  | Alert does not exist |

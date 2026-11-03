@@ -3,5 +3,10 @@
     "dialect": "sqlite",
     "storage": "pulse.db",
     "logging": false
+  },
+  "test": {
+    "dialect": "sqlite",
+    "storage": ":memory:",
+    "logging": false
   }
 }

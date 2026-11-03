@@ -4,5 +4,6 @@ const config = require("../config/config.json").development;
 const sequelize = new Sequelize(config);
 
 const User = require("./user")(sequelize, DataTypes);
+const Device = require("./device")(sequelize, DataTypes);
 
-module.exports = { sequelize, User };
+module.exports = { sequelize, User, Device };

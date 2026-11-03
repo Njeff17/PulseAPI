@@ -12,7 +12,7 @@ router.post("/", async function (req, res) {
 
   const voltage = req.body.voltage;
 
-  if (typeof voltage !== "number") {
+  if (!Number.isFinite(voltage)) {
     return res.status(400).json({ error: "Voltage must be a number" });
   }
 

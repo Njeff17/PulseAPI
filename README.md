@@ -67,3 +67,61 @@ Authorization: Bearer eyJhbGciOi...
 ```
 
 Requests without a valid token get `401 Unauthorized`.
+
+## Devices
+
+All device endpoints require a token.
+
+| Method   | Path                | Description                          |
+| -------- | ------------------- | ------------------------------------ |
+| `GET`    | `/api/devices`      | List all devices                     |
+| `POST`   | `/api/devices`      | Register a new device                |
+| `GET`    | `/api/devices/{id}` | Get details of one device            |
+| `PATCH`  | `/api/devices/{id}` | Update a device's name or location   |
+| `DELETE` | `/api/devices/{id}` | Delete a device and all its readings |
+
+A device has a `name` (required), a `serialNumber` (required, unique) and a `location` (optional).
+
+Register a device:
+
+```http
+POST /api/devices
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{ "name": "Pump A", "serialNumber": "SN-001", "location": "Kigali" }
+```
+
+| Status | When                                   |
+| ------ | -------------------------------------- |
+| `201`  | Device created                         |
+| `400`  | `name` or `serialNumber` is missing    |
+| `404`  | Device not found (get, update, delete) |
+| `409`  | `serialNumber` is already used         |
+
+## Readings
+
+All reading endpoints require a token.
+
+| Method | Path                         | Description                    |
+| ------ | ---------------------------- | ------------------------------ |
+| `POST` | `/api/devices/{id}/readings` | Submit a reading for a device  |
+| `GET`  | `/api/devices/{id}/readings` | List all readings for a device |
+
+A reading has a `voltage` (required, must be a number). The `timestamp` is set by the server.
+
+Submit a reading:
+
+```http
+POST /api/devices/1/readings
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{ "voltage": 12.5 }
+```
+
+| Status | When                      |
+| ------ | ------------------------- |
+| `201`  | Reading saved             |
+| `400`  | `voltage` is not a number |
+| `404`  | Device does not exist     |
